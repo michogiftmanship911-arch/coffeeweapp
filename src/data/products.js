@@ -1,0 +1,352 @@
+// ---------------------------------------------------------------------------
+// Product catalog (18 items). Prices are USD for a Small; see lib/pricing.js
+// for size upcharges. Nutrition values are for a Medium (12 oz).
+//
+//  categories : 'coffee' | 'tea'
+//  temp       : 'hot' | 'iced'
+//  sugarFree  : curated "Sugar-Free range" flag (no added sugar)
+//  vessel     : 'cup' | 'glass'  (drives the 3D model + illustration)
+//  hero       : appears in the swipeable 3D carousel on the home page
+// ---------------------------------------------------------------------------
+
+const make = (o) => ({
+  categories: ['coffee'],
+  temp: 'hot',
+  vessel: 'cup',
+  sugarFree: false,
+  hero: false,
+  badge: null,
+  sugarSource: null,
+  ...o,
+})
+
+export const products = [
+  make({
+    id: 'espresso',
+    slug: 'espresso',
+    name: 'Espresso Double Shot',
+    tagline: 'Dense, syrupy and unapologetically bold.',
+    blurb: 'Two shots pulled slow — thick crema, cocoa depth, a long clean finish.',
+    description:
+      'A double shot pulled right at the edge of intensity: thick golden crema, a syrupy body and a long, cocoa-edged finish. We roast medium-dark so the sweetness stays in the bean, not in the cup.',
+    notes: ['Dark chocolate', 'Toasted hazelnut', 'Caramelised orange peel'],
+    origin: 'Huila, Colombia — washed arabica from smallholder farms grown at high altitude.',
+    price: 3.5,
+    sugarFree: true,
+    hero: true,
+    badge: 'Classic',
+    colors: { liquid: '#3a2012', bgFrom: '#1f130b', bgTo: '#5a3a1e', accent: '#e0a458' },
+    nutrition: { calories: 5, sugar: 0, addedSugar: 0, carbs: 1, fat: 0, protein: 0, caffeine: 150 },
+  }),
+  make({
+    id: 'flat-white',
+    slug: 'flat-white',
+    name: 'Flat White',
+    tagline: 'Velvet microfoam over a ristretto heart.',
+    blurb: 'Silky microfoam folded into a double ristretto. Smooth, small and strong.',
+    description:
+      'A double ristretto topped with tightly textured microfoam, poured thin so the coffee stays front and centre. Creamy without being heavy, with a gentle sweetness from the milk alone.',
+    notes: ['Roasted almond', 'Brown butter', 'Milk chocolate'],
+    origin: 'Ethiopia–Brazil house blend, medium roast.',
+    price: 4.5,
+    badge: 'Bestseller',
+    sugarSource: 'Natural lactose from milk',
+    colors: { liquid: '#b98a5e', bgFrom: '#2b1c10', bgTo: '#7d5530', accent: '#f3d3a1' },
+    nutrition: { calories: 130, sugar: 10, addedSugar: 0, carbs: 11, fat: 7, protein: 7, caffeine: 130 },
+  }),
+  make({
+    id: 'cappuccino',
+    slug: 'cappuccino',
+    name: 'Cappuccino',
+    tagline: 'Equal parts espresso, steam and cloud.',
+    blurb: 'A cloud of dry foam over rich espresso — the morning ritual, perfected.',
+    description:
+      'The Italian classic in equal thirds: espresso, steamed milk and a deep cap of dry foam, dusted with cocoa on request. Light on the tongue, long on aroma.',
+    notes: ['Cocoa dust', 'Toasted marshmallow', 'Hazelnut'],
+    origin: 'House blend of Colombian and Guatemalan arabica.',
+    price: 4.5,
+    sugarSource: 'Natural lactose from milk',
+    colors: { liquid: '#a1724a', bgFrom: '#2e1d12', bgTo: '#8a5e3a', accent: '#f0cfa0' },
+    nutrition: { calories: 110, sugar: 9, addedSugar: 0, carbs: 9, fat: 6, protein: 6, caffeine: 130 },
+  }),
+  make({
+    id: 'classic-mocha',
+    slug: 'classic-mocha',
+    name: 'Classic Mocha',
+    tagline: 'Dark chocolate meets double espresso.',
+    blurb: 'Dark chocolate melted into double espresso and steamed milk. Pure comfort.',
+    description:
+      'Two shots of espresso married to real dark chocolate and silky steamed milk, finished with a whisper of cream. A dessert-leaning favourite for cold evenings.',
+    notes: ['Dark chocolate', 'Malt', 'Vanilla cream'],
+    origin: 'Chocolate from West African co-operatives; coffee from Brazil.',
+    price: 5.25,
+    colors: { liquid: '#4a2a1c', bgFrom: '#241410', bgTo: '#6b3b2a', accent: '#e8a87c' },
+    nutrition: { calories: 290, sugar: 32, addedSugar: 24, carbs: 41, fat: 10, protein: 8, caffeine: 95 },
+  }),
+  make({
+    id: 'iced-caramel-oat-latte',
+    slug: 'iced-caramel-oat-latte',
+    name: 'Iced Caramel Oat Latte',
+    tagline: 'Slow-poured over ice with toasted caramel.',
+    blurb: 'Cold espresso, creamy oat milk and slow-cooked caramel over ice.',
+    description:
+      'Chilled espresso shaken with oat milk and house caramel, poured over ice. Creamy, toasty and gently sweet — our most refreshing indulgence.',
+    notes: ['Toasted caramel', 'Oat cream', 'Roasted nuts'],
+    origin: 'Brazilian arabica; oats from regional growers.',
+    price: 5.75,
+    temp: 'iced',
+    vessel: 'glass',
+    badge: 'New',
+    colors: { liquid: '#c58f55', bgFrom: '#3a2512', bgTo: '#b07a3c', accent: '#ffd08a' },
+    nutrition: { calories: 260, sugar: 28, addedSugar: 22, carbs: 40, fat: 7, protein: 4, caffeine: 110 },
+  }),
+  make({
+    id: 'no-sugar-vanilla',
+    slug: 'no-sugar-vanilla',
+    name: 'No Sugar Vanilla Latte',
+    tagline: 'All the vanilla. None of the added sugar.',
+    blurb: 'Real vanilla, steamed milk and espresso — sweetness without the sugar.',
+    description:
+      'Espresso and steamed milk infused with real vanilla bean and a zero-sugar sweetener. It tastes like the classic vanilla latte you remember, with no added sugar at all.',
+    notes: ['Vanilla bean', 'Warm milk', 'Light caramel'],
+    origin: 'Vanilla from Madagascar; espresso blend from Colombia.',
+    price: 5.25,
+    sugarFree: true,
+    hero: true,
+    badge: 'Sugar-Free',
+    sugarSource: 'Natural lactose from milk',
+    colors: { liquid: '#d9b98a', bgFrom: '#2d2418', bgTo: '#8a7048', accent: '#fff0c9' },
+    nutrition: { calories: 120, sugar: 9, addedSugar: 0, carbs: 11, fat: 6, protein: 7, caffeine: 130 },
+  }),
+  make({
+    id: 'zero-carb-cold-brew',
+    slug: 'zero-carb-cold-brew',
+    name: 'Zero-Carb Cold Brew',
+    tagline: 'Steeped 18 hours. Nothing added.',
+    blurb: 'Eighteen hours of slow steeping — chocolatey, silky and utterly sugar-free.',
+    description:
+      'Coarse-ground beans steeped cold for 18 hours, filtered twice and served over ice. Naturally low in acidity, naturally sweet, and genuinely zero carb.',
+    notes: ['Dark cocoa', 'Black cherry', 'Smooth tobacco leaf'],
+    origin: 'Single-origin Sumatra, low-acid and full-bodied.',
+    price: 4.75,
+    temp: 'iced',
+    vessel: 'glass',
+    sugarFree: true,
+    hero: true,
+    badge: 'Zero Carb',
+    colors: { liquid: '#1c120c', bgFrom: '#101820', bgTo: '#2f4858', accent: '#8ecae6' },
+    nutrition: { calories: 5, sugar: 0, addedSugar: 0, carbs: 0, fat: 0, protein: 0, caffeine: 185 },
+  }),
+  make({
+    id: 'sugar-free-hazelnut-latte',
+    slug: 'sugar-free-hazelnut-latte',
+    name: 'Sugar-Free Hazelnut Latte',
+    tagline: 'Toasted hazelnut, zero added sugar.',
+    blurb: 'Toasty hazelnut and smooth espresso, sweetened without sugar.',
+    description:
+      'Roasted hazelnut flavour folded into a creamy latte and sweetened without sugar. Nutty, round and quietly indulgent.',
+    notes: ['Roasted hazelnut', 'Praline', 'Milk chocolate'],
+    origin: 'Colombian espresso with Piedmont-style hazelnut essence.',
+    price: 5.25,
+    sugarFree: true,
+    sugarSource: 'Natural lactose from milk',
+    colors: { liquid: '#b07a4a', bgFrom: '#2a1a10', bgTo: '#80552e', accent: '#e5b887' },
+    nutrition: { calories: 125, sugar: 9, addedSugar: 0, carbs: 12, fat: 6, protein: 7, caffeine: 130 },
+  }),
+  make({
+    id: 'unsweetened-matcha',
+    slug: 'unsweetened-matcha',
+    name: 'Unsweetened Matcha',
+    tagline: 'Ceremonial grade, whisked to order.',
+    blurb: 'Stone-ground ceremonial matcha whisked with unsweetened almond milk.',
+    description:
+      'Ceremonial-grade matcha whisked to a fine froth and finished with unsweetened almond milk. Grassy, umami-rich and calming, with a natural sweetness you’ll only notice when there’s no sugar to hide it.',
+    notes: ['Fresh-cut grass', 'Umami', 'Toasted nori'],
+    origin: 'Uji, Kyoto, Japan — shade-grown tencha leaves, stone-milled.',
+    price: 5.5,
+    categories: ['tea'],
+    sugarFree: true,
+    hero: true,
+    badge: 'Sugar-Free',
+    sugarSource: 'Trace natural sugars from almond milk',
+    colors: { liquid: '#7fa650', bgFrom: '#0f2a1a', bgTo: '#3f7a3b', accent: '#c6e48b' },
+    nutrition: { calories: 45, sugar: 1, addedSugar: 0, carbs: 3, fat: 3, protein: 2, caffeine: 70 },
+  }),
+  make({
+    id: 'earl-grey-infusion',
+    slug: 'earl-grey-infusion',
+    name: 'Earl Grey Infusion',
+    tagline: 'Black tea, bergamot and a little cornflower.',
+    blurb: 'Bright bergamot over malty black tea, finished with cornflower petals.',
+    description:
+      'A refined Earl Grey: full-leaf black tea scented with cold-pressed bergamot oil and scattered with cornflower petals. Served in a pot, steeped to your taste.',
+    notes: ['Bergamot', 'Malted honey', 'Citrus zest'],
+    origin: 'Ceylon high-grown black tea, Sri Lanka; bergamot from Calabria.',
+    price: 4.0,
+    categories: ['tea'],
+    sugarFree: true,
+    hero: true,
+    badge: 'Specialty',
+    colors: { liquid: '#a8611f', bgFrom: '#1b1a2e', bgTo: '#4a3f6b', accent: '#c9a7ff' },
+    nutrition: { calories: 0, sugar: 0, addedSugar: 0, carbs: 0, fat: 0, protein: 0, caffeine: 55 },
+  }),
+  make({
+    id: 'chai-spice-roast',
+    slug: 'chai-spice-roast',
+    name: 'Chai Spice Roast',
+    tagline: 'Dark roast steeped with warming chai spice.',
+    blurb: 'A dark roast infused with cardamom, cinnamon and ginger. Warm and wonderfully spicy.',
+    description:
+      'Where coffee meets chai. A dark roast brewed with cardamom, cinnamon, clove and fresh ginger, lightly sweetened with jaggery and finished with steamed milk. A hug in a cup.',
+    notes: ['Cardamom', 'Cinnamon bark', 'Jaggery'],
+    origin: 'Coffee from Karnataka, India; spices from Kerala.',
+    price: 5.0,
+    categories: ['coffee', 'tea'],
+    badge: 'Specialty',
+    colors: { liquid: '#8a4b2a', bgFrom: '#2b1409', bgTo: '#9a4f1e', accent: '#ffb066' },
+    nutrition: { calories: 140, sugar: 17, addedSugar: 8, carbs: 22, fat: 4, protein: 4, caffeine: 110 },
+  }),
+  make({
+    id: 'honey-lavender-blend',
+    slug: 'honey-lavender-blend',
+    name: 'Honey-Lavender Blend',
+    tagline: 'Wildflower honey and soft lavender.',
+    blurb: 'Delicate lavender and wildflower honey over smooth white tea.',
+    description:
+      'A floral, soothing blend of white tea and culinary lavender, finished with a spoon of raw wildflower honey. Gentle in caffeine and soft on the senses.',
+    notes: ['Lavender', 'Wildflower honey', 'Pear blossom'],
+    origin: 'White tea from Fujian, China; lavender from Provence.',
+    price: 4.75,
+    categories: ['tea'],
+    hero: true,
+    badge: 'Specialty',
+    colors: { liquid: '#e3b04b', bgFrom: '#2a1f3d', bgTo: '#7a5c9e', accent: '#d8b4fe' },
+    nutrition: { calories: 70, sugar: 17, addedSugar: 16, carbs: 18, fat: 0, protein: 0, caffeine: 30 },
+  }),
+  make({
+    id: 'jasmine-pearl-green',
+    slug: 'jasmine-pearl-green',
+    name: 'Jasmine Pearl Green',
+    tagline: 'Hand-rolled pearls that bloom in the cup.',
+    blurb: 'Hand-rolled jasmine pearls unfurl into a fragrant, delicate green tea.',
+    description:
+      'Young green tea leaves rolled by hand into pearls and scented over several nights with fresh jasmine blossoms. Watch them unfurl as they steep — a quiet ritual.',
+    notes: ['Jasmine blossom', 'Sweet pea', 'Fresh cream'],
+    origin: 'Fuding, Fujian, China.',
+    price: 4.25,
+    categories: ['tea'],
+    sugarFree: true,
+    colors: { liquid: '#c9d77a', bgFrom: '#0f2a22', bgTo: '#5c8a5a', accent: '#f4f1c0' },
+    nutrition: { calories: 0, sugar: 0, addedSugar: 0, carbs: 0, fat: 0, protein: 0, caffeine: 35 },
+  }),
+  make({
+    id: 'hibiscus-zobo-cooler',
+    slug: 'hibiscus-zobo-cooler',
+    name: 'Hibiscus Zobo Cooler',
+    tagline: 'Ruby hibiscus, ginger and a squeeze of lime.',
+    blurb: 'Deep-red hibiscus with ginger and lime, served ice-cold and unsweetened.',
+    description:
+      'Our unsweetened take on the West African zobo: dried hibiscus calyces steeped with fresh ginger, clove and lime, then chilled over ice. Tart, vivid and caffeine-free.',
+    notes: ['Cranberry tartness', 'Fresh ginger', 'Lime zest'],
+    origin: 'Hibiscus sabdariffa from northern Nigeria.',
+    price: 4.25,
+    categories: ['tea'],
+    temp: 'iced',
+    vessel: 'glass',
+    sugarFree: true,
+    hero: true,
+    badge: 'Caffeine-Free',
+    sugarSource: 'Trace natural sugars from the flowers and lime',
+    colors: { liquid: '#a3122e', bgFrom: '#2a0a14', bgTo: '#8e1b35', accent: '#ff8fa3' },
+    nutrition: { calories: 5, sugar: 1, addedSugar: 0, carbs: 1, fat: 0, protein: 0, caffeine: 0 },
+  }),
+  make({
+    id: 'peach-oolong-iced-tea',
+    slug: 'peach-oolong-iced-tea',
+    name: 'Peach Oolong Iced Tea',
+    tagline: 'Roasted oolong with ripe white peach.',
+    blurb: 'Roasted oolong brewed over ripe white peach — juicy, floral, refreshing.',
+    description:
+      'A lightly roasted oolong cold-steeped with white peach purée and a touch of cane syrup. Orchard-fresh and endlessly sippable on a hot afternoon.',
+    notes: ['White peach', 'Orchid', 'Toasted grain'],
+    origin: 'Alishan oolong, Taiwan.',
+    price: 4.75,
+    categories: ['tea'],
+    temp: 'iced',
+    vessel: 'glass',
+    colors: { liquid: '#e9a15a', bgFrom: '#3a1d12', bgTo: '#d17a4a', accent: '#ffd3a8' },
+    nutrition: { calories: 80, sugar: 19, addedSugar: 17, carbs: 20, fat: 0, protein: 0, caffeine: 40 },
+  }),
+  make({
+    id: 'ginger-turmeric-golden-tea',
+    slug: 'ginger-turmeric-golden-tea',
+    name: 'Ginger Turmeric Golden Tea',
+    tagline: 'Sunshine-coloured, warming and caffeine-free.',
+    blurb: 'Fresh ginger and turmeric with black pepper and lemon. Warming, golden, caffeine-free.',
+    description:
+      'Fresh-grated ginger and turmeric simmered with black pepper, lemon peel and a pinch of cinnamon. A bright, warming herbal infusion with no sugar added.',
+    notes: ['Fresh ginger', 'Earthy turmeric', 'Lemon peel'],
+    origin: 'Ginger and turmeric from West African growers.',
+    price: 4.5,
+    categories: ['tea'],
+    sugarFree: true,
+    badge: 'Caffeine-Free',
+    sugarSource: 'Trace natural sugars from ginger and lemon',
+    colors: { liquid: '#e8a317', bgFrom: '#2f1f08', bgTo: '#b9770e', accent: '#ffd35c' },
+    nutrition: { calories: 10, sugar: 2, addedSugar: 0, carbs: 3, fat: 0, protein: 0, caffeine: 0 },
+  }),
+  make({
+    id: 'sparkling-matcha-tonic',
+    slug: 'sparkling-matcha-tonic',
+    name: 'Sparkling Matcha Tonic',
+    tagline: 'Matcha over sugar-free tonic and citrus.',
+    blurb: 'Whisked matcha poured over sparkling zero-sugar tonic and fresh citrus.',
+    description:
+      'Whisked ceremonial matcha floated over sugar-free tonic water and a squeeze of grapefruit. Fizzy, green and delightfully bitter — a grown-up soda.',
+    notes: ['Grapefruit', 'Green tea', 'Quinine bite'],
+    origin: 'Matcha from Kagoshima, Japan.',
+    price: 5.75,
+    categories: ['tea'],
+    temp: 'iced',
+    vessel: 'glass',
+    sugarFree: true,
+    badge: 'New',
+    colors: { liquid: '#9bc45f', bgFrom: '#0b2b2b', bgTo: '#2f8f83', accent: '#b8f2e6' },
+    nutrition: { calories: 5, sugar: 0, addedSugar: 0, carbs: 1, fat: 0, protein: 0, caffeine: 70 },
+  }),
+  make({
+    id: 'moroccan-mint-green',
+    slug: 'moroccan-mint-green',
+    name: 'Moroccan Mint Green Tea',
+    tagline: 'Gunpowder green tea and fresh spearmint.',
+    blurb: 'Smoky gunpowder green tea with armfuls of fresh spearmint.',
+    description:
+      'Gunpowder green tea steeped with a generous bunch of fresh spearmint and poured from height to create a light froth. Cooling, aromatic and served unsweetened.',
+    notes: ['Spearmint', 'Smoky green leaf', 'Cool menthol'],
+    origin: 'Gunpowder green tea from Zhejiang, China; mint grown locally.',
+    price: 4.25,
+    categories: ['tea'],
+    sugarFree: true,
+    colors: { liquid: '#b7d46a', bgFrom: '#0c2b1f', bgTo: '#2f8a5f', accent: '#b9f6ca' },
+    nutrition: { calories: 0, sugar: 0, addedSugar: 0, carbs: 0, fat: 0, protein: 0, caffeine: 30 },
+  }),
+]
+
+export const getProduct = (slug) => products.find((p) => p.slug === slug)
+
+export const heroProducts = products.filter((p) => p.hero)
+
+// Related items: shared category, same temperature and sugar-free status score highest.
+export const getRelated = (product, count = 4) =>
+  products
+    .filter((p) => p.id !== product.id)
+    .map((p) => ({
+      p,
+      score:
+        p.categories.filter((c) => product.categories.includes(c)).length * 2 +
+        (p.temp === product.temp ? 1 : 0) +
+        (p.sugarFree === product.sugarFree ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, count)
+    .map((x) => x.p)

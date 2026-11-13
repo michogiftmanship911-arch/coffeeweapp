@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-forest-950 font-sans text-cream-100 antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(201, 150, 42, 0.45);
+  color: #fff;
+}
+
+/* Lenis (momentum scrolling) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@layer components {
+  /* ---------- Glassmorphism ---------- */
+  .glass {
+    @apply border border-white/20 bg-white/[0.08] shadow-glass backdrop-blur-xl;
+  }
+  .glass-strong {
+    @apply border border-white/25 bg-forest-900/[0.55] shadow-glass-lg backdrop-blur-2xl;
+  }
+  .glass-card {
+    @apply border border-white/20 bg-white/[0.07] shadow-glass backdrop-blur-xl transition duration-500;
+  }
+  .glass-card:hover {
+    @apply border-white/[0.35] bg-white/[0.12] shadow-glass-lg;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-gold {
+    @apply btn bg-gradient-to-br from-gold-200 via-gold-400 to-gold-600 text-forest-950 shadow-gold hover:-translate-y-0.5 hover:shadow-gold-lg active:translate-y-0;
+  }
+  .btn-glass {
+    @apply btn border border-white/30 bg-white/10 text-cream-50 backdrop-blur-md hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/20 active:translate-y-0;
+  }
+  .icon-btn {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-cream-50 backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300;
+  }
+
+  /* ---------- Forms ---------- */
+  .field {
+    @apply w-full rounded-2xl border border-white/25 bg-white/[0.08] px-4 py-3 text-sm text-cream-50 placeholder:text-cream-200/40 backdrop-blur-md transition focus:border-gold-300 focus:bg-white/[0.14] focus:outline-none focus:ring-2 focus:ring-gold-300/30;
+  }
+  .field-error {
+    @apply border-rose-300/70 focus:border-rose-300 focus:ring-rose-300/30;
+  }
+  select.field option {
+    @apply bg-forest-900 text-cream-50;
+  }
+
+  .eyebrow {
+    @apply text-[0.7rem] font-medium uppercase tracking-[0.32em] text-gold-300;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+}
+
+@keyframes steam {
+  0% { opacity: 0; transform: translateY(8px); }
+  40% { opacity: 0.75; }
+  100% { opacity: 0; transform: translateY(-16px); }
+}
+.steam-line {
+  animation: steam 3.4s ease-in-out infinite;
+  transform-box: fill-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steam-line { animation: none; opacity: 0.5; }
+}
